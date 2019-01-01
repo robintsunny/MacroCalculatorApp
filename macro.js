@@ -12,6 +12,15 @@ class Food {
     }
 }
 
+// const dummyFood = new Food('dummy food', 15, 50, 35, 10)
+// const newDummyHtml = `<li class="food_item">${dummyFood.name}<button class="add_food">ADD</button></li><br />`
+// document.querySelector('.food_items').insertAdjacentHTML("beforeend", newDummyHtml);
+
+// var li = document.createElement("li");
+// li.setAttribute('id', candidate.value);
+// li.appendChild(document.createTextNode(candidate.value));
+// ul.appendChild(li)
+
 
 // set goals
 const setGoals = () => {
@@ -45,7 +54,7 @@ document.querySelector('.set_goal').addEventListener('click',setGoals)
 
 
 // create food item and save
-const favorites = [];
+// const favorites = [];
 
 const createFood = () => {
     const name = document.querySelector(".new_name").value;
@@ -60,16 +69,17 @@ const createFood = () => {
 
 
     favorites.push(food);
-    updateDropdown(favorites);
+    updateFoodList(food);
+}
+
+const updateFoodList = food => {
+    const newHtml = `<li class="food_item" id="${food.name}">${food.name}<button class="add_food" id="add_${food.name}">ADD</button></li><br />`
+    document
+    .querySelector('.food_items')
+    .insertAdjacentHTML("beforeend", newHtml);
 }
 
 document.querySelector('.create_food').addEventListener('click', createFood)
-
-
-
-
-// update dropdown options
-
 
 
 // add food item
