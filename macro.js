@@ -1,5 +1,9 @@
-// const newHtml = '<div>howdy</div>';
-// document.querySelector('.yo').insertAdjacentHTML('beforeend', newHtml)
+const dailyIntake = {
+    f: 0,
+    c: 0,
+    p: 0,
+    fib: 0
+}
 
 
 class Food {
@@ -56,7 +60,7 @@ document.querySelector('.set_goal').addEventListener('click',setGoals)
 // create food item and save
 // const favorites = [];
 
-const createFood = () => {
+const addFoodToFavorites = () => {
     const name = document.querySelector(".new_name").value;
     const fat = parseInt(document.querySelector(".new_f").value);
     const carb = parseInt(document.querySelector(".new_c").value);
@@ -68,21 +72,41 @@ const createFood = () => {
     const food = new Food(name, fat, totalCarb, pro, fib);
 
 
-    favorites.push(food);
+    // favorites.push(food);
     updateFoodList(food);
 }
 
 const updateFoodList = food => {
     const newHtml = `<li class="food_item" id="${food.name}">${food.name}<button class="add_food" id="add_${food.name}">ADD</button></li><br />`
-    document
-    .querySelector('.food_items')
-    .insertAdjacentHTML("beforeend", newHtml);
+    
+    document.querySelector('.food_items').insertAdjacentHTML("beforeend", newHtml);
+
 }
 
-document.querySelector('.create_food').addEventListener('click', createFood)
+document.querySelector('.add_food_to_favorites').addEventListener('click', addFoodToFavorites)
 
 
 // add food item
+const addFoodToDaily = () => {
+    const name = document.querySelector(".new_name").value;
+    const fat = parseInt(document.querySelector(".new_f").value);
+    const carb = parseInt(document.querySelector(".new_c").value);
+    const pro = parseInt(document.querySelector(".new_p").value);
+    const fib = parseInt(document.querySelector(".new_fib").value);
+    
+    totalCarb = carb - fib; //account for fiber
+    
+    dailyIntake[f] = dailyIntake[f] + totalCarb;
+    dailyIntake[c] = dailyIntake[c] + fat;
+    dailyIntake[p] = dailyIntake[p] + pro;
+    dailyIntake[fib] = dailyIntake[fib] + fib;
+    
+    updateDaily(dailyIntake)
+}
+
+const addFromFavorites = () => {
+    
+}
 
 
 // calculate macros
